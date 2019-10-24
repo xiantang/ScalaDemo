@@ -31,3 +31,15 @@ def callByName(x: => Int)={
 callByName(func())
 println("---------------------------------")
 callByValue(func())
+
+
+def constOne(x : Int,y: => Int) =x
+
+def loop() = {
+  println("call ")
+  2
+};
+
+
+constOne(1+2,loop())
+constOne(loop(),1+2)
