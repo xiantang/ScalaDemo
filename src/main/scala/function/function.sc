@@ -33,7 +33,7 @@ println("---------------------------------")
 callByValue(func())
 
 
-def constOne(x : Int,y: => Int) =x
+def constOne(x : Int,y: => Int) =1
 
 def loop() = {
   println("call ")
@@ -43,3 +43,27 @@ def loop() = {
 
 constOne(1+2,loop())
 constOne(loop(),1+2)
+
+
+
+
+def abs(x :Double ) = if (x<0) -x else x
+def isGoodEnough(guess:Double,x:Double) :Boolean =
+  abs(guess * guess - x) <0.000001
+
+def improve(guess:Double,x:Double) :Double =
+  (x / guess + guess)/2
+def sqrtIter(guess:Double,x:Double) :Double = {
+  if (isGoodEnough(guess,x) ){
+    guess
+  } else {
+    sqrtIter(improve(guess,x),x)
+  }
+}
+
+def sqrt(x: Double) = sqrtIter(1.0,x)
+
+
+val a = sqrtIter(1,2)
+
+sqrt(4)
