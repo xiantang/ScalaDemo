@@ -45,25 +45,30 @@ constOne(1+2,loop())
 constOne(loop(),1+2)
 
 
+// avoid "name space pollution"
 
+def sqrt(x: Double): Double ={
+  def abs(x :Double ) = if (x<0) -x else x
+  def isGoodEnough(guess:Double,x:Double) :Boolean =
+    abs(guess * guess - x) <0.000001
 
-def abs(x :Double ) = if (x<0) -x else x
-def isGoodEnough(guess:Double,x:Double) :Boolean =
-  abs(guess * guess - x) <0.000001
-
-def improve(guess:Double,x:Double) :Double =
-  (x / guess + guess)/2
-def sqrtIter(guess:Double,x:Double) :Double = {
-  if (isGoodEnough(guess,x) ){
-    guess
-  } else {
-    sqrtIter(improve(guess,x),x)
+  def improve(guess:Double,x:Double) :Double =
+    (x / guess + guess)/2
+  def sqrtIter(guess:Double,x:Double) :Double = {
+    if (isGoodEnough(guess,x) ){
+      guess
+    } else {
+      sqrtIter(improve(guess,x),x)
+    }
   }
+  sqrtIter(1.0,x)
 }
 
-def sqrt(x: Double) = sqrtIter(1.0,x)
 
 
-val a = sqrtIter(1,2)
+
+
+
+val a = sqrt(2)
 
 sqrt(4)
