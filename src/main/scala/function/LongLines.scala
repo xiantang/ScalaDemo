@@ -16,4 +16,10 @@ object LongLines {
     }
   }
 
+  def loop:Boolean  = loop
+
+  def main(args: Array[String]): Unit = {
+
+  }
+
 }
