@@ -22,7 +22,7 @@ object example extends App{
       if trimmed.matches(patterm)
     }println(file + ":" + trimmed)
 
-//  grep(".*?")
+  grep(".*?")
 
   def scanFiles =
     for{
