@@ -9,4 +9,8 @@ def factorial(n:Int):Int = {
   }
   go(n, 1)
 }
-
+// 上下两行相等 apply 方法可以将对象像方法一样调用
+(a:Int,b:Int)=>a<b
+val lessThan = new Function2[Int, Int, Boolean] {
+  override def apply(a: Int, b: Int): Boolean = a < b
+}
