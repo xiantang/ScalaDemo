@@ -1,5 +1,6 @@
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Failure, Success}
 
 
 //
@@ -61,3 +62,24 @@ val fut = Future{42}
 val invalid = fut.filter(
   res => res<0
 )
+
+
+val failure = Future{42/0}
+//failure.value
+//val exceptedFailure = failure.failed
+//exceptedFailure.value
+//
+//val failedFallback = failur
+//
+failure onComplete{
+  case Success(res) => println(res)
+  case Failure(ex) => println(ex)
+}
+
+
+
+val oneTwoThree = List(1, 2, 3) match {
+  case hd::tl =>
+    println(hd)
+}
+//1 :: List(1,2)
